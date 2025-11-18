@@ -1,0 +1,99 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Place {
+    id                  Int                 @id     @default(autoincrement())
+    placeName           String
+
+    usedForecast        ForecastHeader[]    @relation("PlaceToForecast")
+}
+
+model Part {
+    id                  String              @id
+    partName            String
+
+    components          PartAssy[]          @relation("PartComponents")
+    usedIn              PartAssy[]          @relation("PartParents")
+
+    usedBom             Bom[]               @relation("PartToBom")
+    forecast            ForecastDetail[]    @relation("PartToForecast")
+}
+
+model PartAssy {
+    id                  Int                 @id @default(autoincrement())
+    
+    parentId            String
+    childId             String
+
+    parent              Part                @relation("PartComponents", fields: [parentId], references: [id])
+    child               Part                @relation("PartParents", fields: [childId], references: [id])
+
+    @@unique([parentId, childId])
+}
+
+model Mat {
+    id                  String              @id
+    name                String
+    supplier            String
+    boi                 Boolean
+
+    usedBom             Bom[]               @relation("MatToBom")
+}
+
+model Pigment {
+    id                  String              @id
+    name                String
+
+    usedBom             Bom[]               @relation("PigmentToBom")
+}
+
+model Bom {
+    stiId               String              @id
+
+    partBomId           String
+    part                Part                @relation("PartToBom", fields: [partBomId], references: [id])
+
+    matId               String
+    mat                 Mat                 @relation("MatToBom", fields: [matId], references: [id])
+
+    pigmentId           String?
+    pigment             Pigment?            @relation("PigmentToBom", fields: [pigmentId], references: [id])
+    pigmentRatio        Float?
+
+    cavity              Int
+    virgin              Int
+    weight              Float
+    runner              Float
+}
+
+model ForecastHeader {
+    id                  Int                 @id     @default(autoincrement())
+
+    placeId             Int
+    place               Place               @relation("PlaceToForecast", fields: [placeId], references: [id])
+
+    documentNo          String
+    version             Int
+    forecastMonth       DateTime
+
+    usedForecastDetail  ForecastDetail[]    @relation("FcToDt")
+}
+
+model ForecastDetail {
+    id                  Int                 @id     @default(autoincrement())
+
+    headerId            Int
+    header              ForecastHeader      @relation("FcToDt", fields: [headerId], references: [id])
+
+    partId              String
+    part                Part                @relation("PartToForecast", fields: [partId], references: [id])
+
+    forMonth            DateTime
+    qty                 Float
+}
