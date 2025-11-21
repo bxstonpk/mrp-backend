@@ -5,9 +5,9 @@ export interface Part {
 
 export interface PartRepository {
     getAllPart(): Promise<Part[] | null>;
-    getPartById(id: string): Promise<Part | null>;
+    getPartById(id: string): Promise<Part[] | null>;
     
-    createPart(part: Part): Promise<Part | null>;
-    updatePart(part: Part): Promise<Part | null>;
-    deletePart(id: string): Promise<Part | null>;
+    createPart(part: Part): Promise<Boolean | null>;
+    updatePart(part: Part): Promise<Boolean | null>;
+    deletePart(id: string): Promise<Boolean | null>;
 }

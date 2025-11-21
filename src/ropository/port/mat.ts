@@ -9,7 +9,7 @@ export interface MatRepository {
     getAllMat(): Promise<Mat[] | null>;
     getMatById(id: string): Promise<Mat | null>;
     
-    createMat(mat: Mat): Promise<Mat | null>;
-    updateMat(mat: Mat): Promise<Mat | null>;
-    deleteMat(id: string): Promise<Mat | null>;
+    createMat(mat: Mat): Promise<Boolean | null>;
+    updateMat(mat: Mat): Promise<Boolean | null>;
+    deleteMat(id: string): Promise<Boolean | null>;
 }

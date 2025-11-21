@@ -8,23 +8,23 @@ export class MySqlPartassyRepository implements PartassyRepository {
         this.db = db;
     }
 
-    getAllPartassy(): Promise<Partassy[] | null> {
+    async getAllPartassy(): Promise<Partassy[] | null> {
         throw new Error("Method not implemented.");
     }
 
-    getPartassyById(id: number): Promise<Partassy | null> {
+    async getPartassyById(id: number): Promise<Partassy | null> {
         throw new Error("Method not implemented.");
     }
 
-    createPartassy(partassy: Partassy): Promise<Partassy | null> {
+    async createPartassy(partassy: Partassy): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 
-    updatePartassy(partassy: Partassy): Promise<Partassy | null> {
+    async updatePartassy(partassy: Partassy): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
     
-    deletePartassy(id: number): Promise<Partassy | null> {
+    async deletePartassy(id: number): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 }

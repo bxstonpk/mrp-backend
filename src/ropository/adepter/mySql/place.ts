@@ -8,23 +8,23 @@ export class MySqlPlaceRepository implements PlaceRepository {
         this.db = db;
     }
 
-    getAllPlace(): Promise<Place[] | null> {
+    async getAllPlace(): Promise<Place[] | null> {
         throw new Error("Method not implemented.");
     }
 
-    getPlaceById(id: number): Promise<Place | null> {
+    async getPlaceById(id: number): Promise<Place | null> {
         throw new Error("Method not implemented.");
     }
 
-    createPlace(place: Place): Promise<Place | null> {
+    async createPlace(place: Place): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 
-    updatePlace(place: Place): Promise<Place | null> {
+    async updatePlace(place: Place): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
     
-    deletePlace(id: number): Promise<Place | null> {
+    async deletePlace(id: number): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 }

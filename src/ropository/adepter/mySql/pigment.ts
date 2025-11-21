@@ -16,15 +16,15 @@ export class MySqlPigmentRepository implements PigmentRepository {
         throw new Error("Method not implemented.");
     }
 
-    async createPigment(pigment: Pigment): Promise<Pigment | null> {
+    async createPigment(pigment: Pigment): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 
-    async updatePigment(pigment: Pigment): Promise<Pigment | null> {
+    async updatePigment(pigment: Pigment): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 
-    async deletePigment(id: string): Promise<Pigment | null> {
+    async deletePigment(id: string): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 }

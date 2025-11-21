@@ -21,9 +21,9 @@ export interface ForecastAggregate {
 
 export interface ForecastRepository {
     getAllForecast(): Promise<ForecastAggregate[] | null>;
-    getForecastById(id: number): Promise<ForecastAggregate | null>;
+    getForecastById(id: number): Promise<ForecastAggregate[] | null>;
 
-    createForecast(dto: ForecastAggregate): Promise<ForecastAggregate | null>;
-    updateForecast(dto: ForecastAggregate): Promise<ForecastAggregate | null>;
+    createForecast(dto: ForecastAggregate): Promise<Boolean | null>;
+    updateForecast(dto: ForecastAggregate): Promise<Boolean | null>;
     deleteForecast(id: number): Promise<Boolean>;
 }

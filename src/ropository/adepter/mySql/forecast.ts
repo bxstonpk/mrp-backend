@@ -12,15 +12,15 @@ export class MySqlForecastRepository implements ForecastRepository {
         throw new Error("Method not implemented.");
     }
 
-    async getForecastById(id: number): Promise<ForecastAggregate | null> {
+    async getForecastById(id: number): Promise<ForecastAggregate[] | null> {
         throw new Error("Method not implemented.");
     }
 
-    async createForecast(dto: ForecastAggregate): Promise<ForecastAggregate | null> {
+    async createForecast(dto: ForecastAggregate): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 
-    async updateForecast(dto: ForecastAggregate): Promise<ForecastAggregate | null> {
+    async updateForecast(dto: ForecastAggregate): Promise<Boolean | null> {
         throw new Error("Method not implemented.");
     }
 
